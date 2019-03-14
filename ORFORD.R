@@ -15,27 +15,31 @@ library(parallel)
 
 # bash issue: need to run first line at least
 #export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-#nano .bash_profile
-#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$PATH
-
-# login to JASMIN
+#ls
+##nano .bash_profile
+##export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$PATH
+#
+## login to JASMIN
 #cd /C/MobiXterm
 #exec ssh-agent $SHELL
 #ssh-add /C/MobiXterm/.ssh/id_rsa_jasmin
 #ssh -A c_tha1@jasmin-login1.ceda.ac.uk
 #ssh -A c_tha1@jasmin-sci3.ceda.ac.uk
-#R
 #
-## I HAVE NO TIME TO MESS AROUND WITH JASMIN - I CAN'T UPLOAD FILES USING SFTP AT THE MOMENT
+##R
+##
+## SFTP
+#cd /C/MobiXterm
+#exec ssh-agent $SHELL
+#ssh-add /C/MobiXterm/.ssh/id_rsa_jasmin
 #sftp c_tha1@jasmin-xfer1.ceda.ac.uk
-#user@host:C/MobiXterm
-#put /C/MobiXterm/Walney.WR.csv
-#lcd host:C:\
 #
-#library(mgcv)
-#library(parallel)
-#
-#put [-P] local-path [remote-path]
+#lpwd
+#lcd C:/MobiXterm
+#lls
+#put Walney.WR.csv
+#ls
+
 
 ####################################################################
 # SET COLONY 
