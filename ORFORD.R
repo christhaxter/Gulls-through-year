@@ -1,45 +1,12 @@
 ###################################################################
-# Chris Thaxter LBBG annual vulnerability paper 06/02/2019
-#
-#
-# Model weights - geographically weighted for UK
-# using proportion of birds with active tags vs total
-# Doesn't of course deal with missing data directly (which would require
-# imputation, but at least this elevates the importance of sqs
-# with undersampled bias, so assuming missing data corresponds to that observed)
-# This is a "geographically" weighted model (but not to be confused with a true GWR of course among wider ecology)
+# LBBG annual vulnerability paper 18/03/2019
+# Example model structure, reading in colony.WR.csv raw data dist.risk.secs, modelling sensitivity over xyt
+# for square i, julian date j. Zero data for squares within the swathe per day per year
+# Model weights - geographically weighted for UK, using proportion of birds with active tags vs total
 ##################################################################
 
 library(mgcv)
 library(parallel)
-
-# bash issue: need to run first line at least
-#export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-#ls
-##nano .bash_profile
-##export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:$PATH
-#
-## login to JASMIN
-#cd /C/MobiXterm
-#exec ssh-agent $SHELL
-#ssh-add /C/MobiXterm/.ssh/id_rsa_jasmin
-#ssh -A c_tha1@jasmin-login1.ceda.ac.uk
-#ssh -A c_tha1@jasmin-sci3.ceda.ac.uk
-#
-##R
-##
-## SFTP
-#cd /C/MobiXterm
-#exec ssh-agent $SHELL
-#ssh-add /C/MobiXterm/.ssh/id_rsa_jasmin
-#sftp c_tha1@jasmin-xfer1.ceda.ac.uk
-#
-#lpwd
-#lcd C:/MobiXterm
-#lls
-#put Walney.WR.csv
-#ls
-
 
 ####################################################################
 # SET COLONY 
@@ -69,7 +36,7 @@ data$bird <- as.factor(data$bird)
 data$dum <- 1
 
 ####################################################################
-# Read in the base prediction file from program: Get.prediction.grid.R (TRANSFERRED ACROSS TO UNIX)
+# Read in the base prediction file from program: Get.prediction.grid.R 
 ####################################################################
 #setwd("E:/Gull Tracking/DECC01 gulls skuas and windfarms/papers/Migration_appliedpaper/outputs/ppi grid exports/")
 path.in <- "predgrid_CCC.csv"
@@ -82,11 +49,7 @@ data2 <- merge(data,sub,by="square")
 # MODEL 
 #####################################################################
 # run through ALL birds for chosen colony
-
-###see if you have multiple cores
 detectCores()
-
-##indicate number of cores used for parallel processing
 if (detectCores()>1) {
 cl <- makeCluster(detectCores()-1)
 } else cl <- NULL
@@ -121,7 +84,7 @@ if(colony == "Walney"){bird.dum <- 4034}
 if(colony == "Skokholm"){bird.dum <- 5000}
 if(colony == "Orford Ness"){bird.dum <- 395}
 
-# cycle through 1:365 days and output predictions for each square ACROSS BIRDS
+# cycle through 1:365 days and output predictions for each square across birds
 ppi <- ppi1 <- ppi2 <- NULL
 for(i in 1:365){
   pred.grid2 <- pred.grid
@@ -177,7 +140,7 @@ write.table(ppi,path,sep=",",row.names=F,col.names=T)
 #
 #setwd("Y:/Gull Tracking/Data/GIS/")
 #world <- readOGR(getwd(),layer="country")
-#crop_lim = extent(c(-12,6), c(45,65)) # we modelled habitat use around 100 km around the breeding colony encompassing previous 95% total area use estimates from previous analyses.....
+#crop_lim = extent(c(-12,6), c(45,65)) 
 #world.crop <- crop(world, crop_lim)
 #world.crop <- spTransform(world.crop,proj4stringA)
 #pol.crop <- crop(pol,extent(world.crop))
