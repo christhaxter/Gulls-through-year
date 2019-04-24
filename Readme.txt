@@ -24,5 +24,7 @@ Full mapping script to produce main graphical outputs within the paper. NOTE: Or
 - n.turb.csv
 csv file of number of turbines per grid square used as the exposure surface
 
+- p.coll.surface.csv
+csv file of the probability of collision combined with the spatial model of distance travelled within the collision risk window to produce final sensitivity surfaces.
 
 
