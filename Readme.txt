@@ -17,8 +17,12 @@ For further plotting as quantiles across blank swathe of area use
 Full modelling script. note file sizes were very large and so have not been uploaded here, but models were specified
 as in this example - note called "ORFORD" but actually set to model the Walney colony, via toggle of colony name
 
-- Spatial plots.SEV
+- Spatial plots.SEV.R
 
 Full mapping script to produce main graphical outputs within the paper. NOTE: Original files used are too big to be shared here. Please contact me if these are required. 
+
+- n.turb.csv
+csv file of number of turbines per grid square used as the exposure surface
+
 
 
