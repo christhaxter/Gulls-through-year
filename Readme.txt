@@ -16,11 +16,15 @@
 
 ########################### DATASETS ###########################
 
+######## country.zip ########
+# Shapefiles for plotting base maps
+
 ######## predgrid_Walney.csv ... ########
 # Prediction grids for each colony; note suffix of 'firstyear' for Orford Ness presenting the first year of tracking data in this paper
 
-######## Walney.sens.raw.exam.bird4032.csv ########
-# Raw data on distance travelled within the CRW with zero data included for each square per julian date
+######## Walney.WR.csv ... ########
+# Full raw data files on distance travelled within the CRW per square, bird and Julian date, feeding into modelling for sensitivity
+# These files are large and have been uploaded as .gz zip files, available under the release tab
 
 ######## p.coll.surface.csv ########
 # Probability of collision, for combining with the spatial model of distance travelled within the collision risk window to 
@@ -35,6 +39,8 @@
 
 ######## Walney.200.5_WR.csv ... ########
 # Full model output files for each colony, numbers denoting degrees of freedom in space and time (model A = 200.5, model B = 25.100)
-# These files are large and have been uploaded as .gz zip files, available under *****
+# These files are large and have been uploaded as .gz zip files, available under the release tab
+
+
 
 
