@@ -137,7 +137,7 @@ write.table(ppi,path,sep=",",row.names=F,col.names=T)
 #values(r) <- 1:ncell(r)
 #pol <- rasterToPolygons(r)	### create a polygon from the raster
 #
-#setwd("Y:/Gull Tracking/Data/GIS/")
+#setwd("A:/")
 #world <- readOGR(getwd(),layer="country")
 #crop_lim = extent(c(-12,6), c(45,65)) 
 #world.crop <- crop(world, crop_lim)
