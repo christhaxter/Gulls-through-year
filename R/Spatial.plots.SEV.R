@@ -1,11 +1,7 @@
 ###########################################################################
 # LBBG Annual vulnerability paper 18/03/2019
 #
-# Plotting sensitivity and vulnerability surfaces from 200.5 model A
-#
-# Note still need to update the appendix plot where sensitivity
-# is plotted alongside raw data - i.e. so sensitivity had pcoll added
-# suggest the xy comparison should be for raw data though, i.e. as modelled
+# Plotting sensitivity and vulnerability surfaces 
 #
 ###########################################################################
 
@@ -27,7 +23,7 @@ sessionInfo()
 # read in a world shapefile used for plotting
 
 ### SET PROJECTION FOR EACH SHAPEFILE READ IN
-setwd("Y:/Gull Tracking/Data/GIS/")
+setwd("A:/")
 world <- readOGR(getwd(),layer="country")
 crop_lim = extent(c(-12,20), c(10,70))
 world <- crop(world,crop_lim)  
@@ -361,6 +357,7 @@ plotquant(r.rse,whatplot = "RSE",Colony = colony,plotlocal=TRUE)
 ## ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 #igotwind <- function(){
 #  
+#  FILE NOT PROVIDED ON THIS REPOSITORY
 #  wind.locs <- read.csv("World_windfarms_chrisextra.csv",sep=",",na.strings = "#ND")
 #  
 #  # TRANSFORM TO PROJECTED
@@ -835,9 +832,7 @@ grid.out$square <- 1:length(rep(0,ncell(r)))
 ###########################################################
 # code to sum up the predictions
 setwd("A:/")
-if(colony == "Skokholm"){
-  mod.data.in <- "CCC.25.100.csv"
-} else mod.data.in <- "CCC.25.100_WR.csv"
+mod.data.in <- "CCC.25.100_WR.csv"
 mod.data.in <- gsub("CCC",colony,mod.data.in)
 data <- read.csv(mod.data.in,sep=",",header=T)
 data$RSE <- data$pred.se / data$pred
@@ -1371,7 +1366,7 @@ dev.off()
 ##################################################
 
 setwd("A:/")
-raw <- read.csv(paste0(colony,".csv"),sep=",",header=TRUE)
+raw <- read.csv(paste0(colony,".WR.csv"),sep=",",header=TRUE)
 
 # mean across birds
 data44 <- with(raw,aggregate(dist.risk.secs,by = list(julian,square), 'mean'))
@@ -1404,13 +1399,11 @@ data3 <- read.csv("Walney.sp.agg.csv",header=TRUE)
 ##################################
 # Model output stats
 
-model <- readRDS("Orford Ness.25.100_WR.rds")
-model <- readRDS("Walney.25.100_WR.rds")
-model <- readRDS("Skokholm.25.100_WR.rds")
-
-rm(model)
-
-summary(model)
+#model <- readRDS("Orford Ness.25.100_WR.rds")
+#model <- readRDS("Walney.25.100_WR.rds")
+#model <- readRDS("Skokholm.25.100_WR.rds")
+#rm(model)
+#summary(model)
 
 
 
